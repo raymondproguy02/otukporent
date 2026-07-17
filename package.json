@@ -1,0 +1,24 @@
+{
+  "name": "otukporent",
+  "version": "1.0.0",
+  "description": "The platform  that help's landlords and property owners in Otukpo find tenants faster. Tenants search by location and contact you directly.",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve src",
+    "dev": "serve src",
+    "build": "echo 'No build step needed yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raymondproguy02/otukporent.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raymondproguy02/otukporent/issues"
+  },
+  "homepage": "https://github.com/raymondproguy02/otukporent#readme",
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}
