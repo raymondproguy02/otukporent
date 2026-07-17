@@ -1,0 +1,286 @@
+/* ===== CONTAINERS ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.container-sm {
+    max-width: 800px;
+}
+
+.container-xs {
+    max-width: 500px;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.grid-cols-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-cols-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== FLEX ===== */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.gap-sm {
+    gap: var(--space-sm);
+}
+.gap-md {
+    gap: var(--space-md);
+}
+.gap-lg {
+    gap: var(--space-lg);
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* ===== SPACING ===== */
+.mt-sm {
+    margin-top: var(--space-sm);
+}
+.mt-md {
+    margin-top: var(--space-md);
+}
+.mt-lg {
+    margin-top: var(--space-lg);
+}
+.mt-xl {
+    margin-top: var(--space-xl);
+}
+
+.mb-sm {
+    margin-bottom: var(--space-sm);
+}
+.mb-md {
+    margin-bottom: var(--space-md);
+}
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}
+.mb-xl {
+    margin-bottom: var(--space-xl);
+}
+
+.p-sm {
+    padding: var(--space-sm);
+}
+.p-md {
+    padding: var(--space-md);
+}
+.p-lg {
+    padding: var(--space-lg);
+}
+.p-xl {
+    padding: var(--space-xl);
+}
+
+/* ===== TEXT ===== */
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+
+.text-xs {
+    font-size: var(--font-size-xs);
+}
+.text-sm {
+    font-size: var(--font-size-sm);
+}
+.text-md {
+    font-size: var(--font-size-md);
+}
+.text-lg {
+    font-size: var(--font-size-lg);
+}
+.text-xl {
+    font-size: var(--font-size-xl);
+}
+.text-2xl {
+    font-size: var(--font-size-2xl);
+}
+.text-3xl {
+    font-size: var(--font-size-3xl);
+}
+.text-4xl {
+    font-size: var(--font-size-4xl);
+}
+
+.font-bold {
+    font-weight: 700;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.font-medium {
+    font-weight: 500;
+}
+.font-normal {
+    font-weight: 400;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+.text-gold {
+    color: var(--color-gold);
+}
+.text-primary {
+    color: var(--color-primary);
+}
+.text-white {
+    color: #ffffff;
+}
+
+/* ===== UTILITIES ===== */
+.hidden {
+    display: none !important;
+}
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block;
+}
+
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.sticky {
+    position: sticky;
+}
+.fixed {
+    position: fixed;
+}
+
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+.shadow-xl {
+    box-shadow: var(--shadow-xl);
+}
+
+/* ===== SCREEN READER ONLY ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ===== LOADING SKELETON ===== */
+.skeleton {
+    background: linear-gradient(90deg, #f0ece8 25%, #e8e2dc 50%, #f0ece8 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}

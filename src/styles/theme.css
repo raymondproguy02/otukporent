@@ -1,0 +1,72 @@
+/* ===== DESIGN TOKENS ===== */
+:root {
+    /* Colors */
+    --color-primary: #1a4d1a;
+    --color-primary-light: #2a6e2a;
+    --color-primary-dark: #0f330f;
+    --color-gold: #c9a84c;
+    --color-gold-light: #e8d5a3;
+    --color-gold-dark: #a8883a;
+    --color-bg: #f5f0eb;
+    --color-bg-white: #ffffff;
+    --color-text: #1e2a1e;
+    --color-text-secondary: #4a5a4a;
+    --color-text-muted: #7a8a7a;
+    --color-border: #e0d6cc;
+    --color-success: #27ae60;
+    --color-warning: #f39c12;
+    --color-danger: #c0392b;
+    --color-info: #3498db;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 30px;
+    --radius-full: 9999px;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+
+    /* Typography */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-Index */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 300;
+    --z-toast: 400;
+    --z-overlay: 500;
+}
+
+/* ===== DARK MODE (Future) ===== */
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        /* Will be implemented later if needed 
+    }
+} 
+*/
