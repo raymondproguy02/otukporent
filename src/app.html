@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>OtukpoRent - Find Properties in Otukpo</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Find properties for rent in Otukpo. Connect directly with landlords. No middlemen." />
+    <meta name="keywords" content="Otukpo, rent, houses, flats, shops, land, Benue, Nigeria" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OtukpoRent - Find Your Home in Otukpo" />
+    <meta property="og:description" content="Connect directly with landlords in Otukpo. No middlemen. No commission." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://otukporent.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+
+    <!-- Page-specific styles will be loaded dynamically -->
+</head>
+<body>
+
+    <!-- ===== APP SHELL ===== -->
+    <div id="app">
+        <!-- Navbar -->
+        <header class="app-header" id="appNavbar" role="banner">
+            <div class="container flex items-center justify-between">
+                <a href="/app.html" class="logo" aria-label="OtukpoRent Home">
+                    <span class="logo-icon">🏠</span>
+                    <span class="logo-text">Otukpo<span>Rent</span></span>
+                </a>
+
+                <nav class="nav-links" aria-label="Main navigation">
+                    <a href="#" data-page="home" class="active"><i class="fas fa-search"></i> Find</a>
+                    <a href="#" data-page="post"><i class="fas fa-plus-circle"></i> Post</a>
+                    <a href="#" data-page="dashboard"><i class="fas fa-user"></i> Dashboard</a>
+                    <a href="#" data-page="admin" id="adminNavLink" style="display:none;">
+                        <i class="fas fa-shield-alt"></i> Admin
+                    </a>
+                </nav>
+
+                <button class="mobile-menu-btn" aria-label="Toggle menu" id="appMobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Container -->
+        <main class="app-main" id="appMain">
+            <!-- Pages will be rendered here -->
+            <div id="pageContainer"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer" role="contentinfo">
+            <div class="container text-center">
+                <p>&copy; 2025 <strong>OtukpoRent</strong>. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div id="toastContainer"></div>
+
+    <!-- ===== MODAL CONTAINER ===== -->
+    <div id="modalContainer"></div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script type="module">
+        // ===== APP ENTRY POINT =====
+        import { renderHome } from './pages/app/home.js';
+        import { renderDetail } from './pages/app/detail.js';
+        import { renderPost } from './pages/app/post.js';
+        import { renderDashboard } from './pages/app/dashboard.js';
+        import { renderAdmin } from './pages/app/admin.js';
+        import { renderLogin } from './pages/auth/login.js';
+        import { isAdmin, getToken } from './utils/auth.js';
+
+        // ===== STATE =====
+        let currentPage = 'home';
+        let currentParams = {};
+
+        // ===== DOM REFS =====
+        const pageContainer = document.getElementById('pageContainer');
+        const navLinks = document.querySelectorAll('[data-page]');
+        const adminNavLink = document.getElementById('adminNavLink');
+
+        // ===== PAGE RENDERER =====
+        const pages = {
+            home: renderHome,
+            detail: renderDetail,
+            post: renderPost,
+            dashboard: renderDashboard,
+            admin: renderAdmin,
+            login: renderLogin,
+        };
+
+        async function navigate(page, params = {}) {
+            currentPage = page;
+            currentParams = params;
+
+            // Update URL
+            const url = new URL(window.location);
+            url.search = new URLSearchParams(params).toString();
+            window.history.pushState({ page, params }, '', url);
+
+            // Update nav
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.page === page);
+            });
+
+            // Show admin nav if authenticated
+            if (page === 'admin' && !isAdmin() && !getToken()) {
+                navigate('login');
+                return;
+            }
+
+            // Render page
+            const renderFn = pages[page];
+            if (renderFn) {
+                pageContainer.innerHTML = '<div class="loader-container"><div class="loader"></div></div>';
+                try {
+                    await renderFn(pageContainer, params);
+                } catch (error) {
+                    console.error('Error rendering page:', error);
+                    pageContainer.innerHTML = `
+                        <div class="error-container">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Something went wrong</h3>
+                            <p>${error.message || 'Please try again.'}</p>
+                            <button onclick="location.reload()">Reload</button>
+                        </div>
+                    `;
+                }
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== ROUTING =====
+        function handleRoute() {
+            const url = new URL(window.location);
+            const params = Object.fromEntries(url.searchParams);
+            const page = params.page || 'home';
+
+            // Special case: if property ID is present, go to detail
+            if (params.property) {
+                navigate('detail', { id: params.property });
+                return;
+            }
+
+            // Check if user is trying to access admin
+            if (page === 'admin' && !isAdmin() && !getToken()) {
+                navigate('login');
+                return;
+            }
+
+            navigate(page, params);
+        }
+
+        // ===== NAVIGATION CLICKS =====
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.dataset.page;
+                if (page === 'admin' && !isAdmin() && !getToken()) {
+                    navigate('login');
+                    return;
+                }
+                navigate(page);
+            });
+        });
+
+        // ===== ADMIN NAV VISIBILITY =====
+        function updateAdminNav() {
+            if (isAdmin() || getToken()) {
+                adminNavLink.style.display = 'inline-flex';
+            } else {
+                adminNavLink.style.display = 'none';
+            }
+        }
+
+        // ===== POPSTATE (Back/Forward) =====
+        window.addEventListener('popstate', handleRoute);
+
+        // ===== MOBILE MENU =====
+        document.getElementById('appMobileMenuBtn')?.addEventListener('click', () => {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('open');
+        });
+
+        // ===== INIT =====
+        updateAdminNav();
+        handleRoute();
+
+        // ===== TOAST SYSTEM =====
+        window.showToast = (message, type = 'info') => {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        // ===== MODAL SYSTEM =====
+        window.openModal = (content) => {
+            const container = document.getElementById('modalContainer');
+            container.innerHTML = `
+                <div class="modal-overlay" onclick="if(event.target===this) closeModal()">
+                    <div class="modal-content">${content}</div>
+                </div>
+            `;
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeModal = () => {
+            const container = document.getElementById('modalContainer');
+            container.innerHTML = '';
+            document.body.style.overflow = '';
+        };
+
+        // Expose navigate for other modules
+        window.navigate = navigate;
+        window.updateAdminNav = updateAdminNav;
+
+        console.log('🏠 OtukpoRent App initialized');
+    </script>
+</body>
+</html>
