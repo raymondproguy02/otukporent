@@ -1,0 +1,178 @@
+/* ===== PROPERTY CARD ===== */
+.property-card {
+    display: block;
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.property-card-img {
+    position: relative;
+    height: 200px;
+    background: var(--color-border);
+    overflow: hidden;
+}
+
+.property-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.property-card:hover .property-card-img img {
+    transform: scale(1.03);
+}
+
+.property-card-img .no-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 3rem;
+    color: #bbb;
+}
+
+.badge-verified {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--color-gold);
+    color: var(--color-primary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    z-index: 1;
+}
+
+.badge-views {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    z-index: 1;
+}
+
+.badge-views i {
+    margin-right: 4px;
+}
+
+.property-card-body {
+    padding: var(--space-md);
+}
+
+.property-card-body h3 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--color-text);
+}
+
+.property-card-body .location {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+}
+
+.property-card-body .location i {
+    color: var(--color-gold);
+    width: 16px;
+}
+
+.property-card-body .price {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+    margin-bottom: 8px;
+}
+
+.property-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+}
+
+.property-card-footer .landlord {
+    color: var(--color-text-secondary);
+}
+
+.property-card-footer .landlord i {
+    color: var(--color-gold);
+    margin-right: 4px;
+}
+
+.property-card-footer .contact-lock {
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.property-card-footer .contact-lock i {
+    margin-right: 4px;
+}
+
+/* ===== SKELETON ===== */
+.property-card-skeleton {
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.property-card-skeleton .skeleton {
+    border-radius: 0;
+}
+
+.property-card-skeleton .skeleton:first-child {
+    height: 200px;
+}
+
+/* ===== EMPTY / ERROR STATES ===== */
+.empty-state,
+.error-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-2xl) var(--space-md);
+}
+
+.empty-state i,
+.error-state i {
+    display: block;
+    margin-bottom: var(--space-md);
+}
+
+.empty-state h3,
+.error-state h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.empty-state p,
+.error-state p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .property-card-img {
+        height: 160px;
+    }
+}
