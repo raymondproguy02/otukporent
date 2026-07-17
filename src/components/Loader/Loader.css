@@ -1,0 +1,107 @@
+/* ===== LOADER STYLES ===== */
+.loader-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) 0;
+    min-height: 200px;
+}
+
+.loader {
+    position: relative;
+    display: inline-block;
+}
+
+.loader div {
+    position: absolute;
+    border: 3px solid var(--color-gold);
+    border-radius: 50%;
+    animation: loaderSpin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.loader div:nth-child(1) {
+    animation-delay: -0.45s;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+}
+.loader div:nth-child(2) {
+    animation-delay: -0.3s;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+}
+.loader div:nth-child(3) {
+    animation-delay: -0.15s;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+}
+.loader div:nth-child(4) {
+    animation-delay: 0s;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+}
+
+@keyframes loaderSpin {
+    0% {
+        transform: rotate(0deg);
+        border-color: var(--color-gold);
+    }
+    50% {
+        border-color: var(--color-primary);
+    }
+    100% {
+        transform: rotate(360deg);
+        border-color: var(--color-gold);
+    }
+}
+
+/* ===== INLINE LOADER ===== */
+.inline-loader {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.inline-loader i {
+    font-size: var(--font-size-md);
+    color: var(--color-gold);
+}
+
+/* ===== SKELETON ===== */
+.skeleton {
+    background: linear-gradient(90deg, #f0ece8 25%, #e8e2dc 50%, #f0ece8 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.skeleton-card .skeleton {
+    border-radius: 0;
+}
+
+.skeleton-detail .skeleton {
+    margin-bottom: var(--space-sm);
+}
