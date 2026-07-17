@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OtukpoRent - Find Houses, Flats & Land in Otukpo</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Find properties for rent in Otukpo. Connect directly with landlords. No middlemen. Search flats, rooms, shops & land in Otukpo." />
+    <meta name="keywords" content="Otukpo, rent, houses, flats, shops, land, Benue, Nigeria" />
+    <link rel="canonical" href="https://otukporent.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="OtukpoRent - Find Your Home in Otukpo" />
+    <meta property="og:description" content="Connect directly with landlords in Otukpo. No middlemen. No commission." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://otukporent.com" />
+    <meta property="og:image" content="/assets/images/og-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/pages/landing/landing.css" />
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="landing-header" role="banner">
+        <div class="container flex items-center justify-between">
+            <a href="/" class="logo" aria-label="OtukpoRent Home">
+                <span class="logo-icon">🏠</span>
+                <span class="logo-text">Otukpo<span>Rent</span></span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="/app.html">Find Houses</a>
+                <a href="/app.html#post">Post Property</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="/login.html" class="btn-login">Admin</a>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Toggle menu" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" aria-label="Find your home in Otukpo">
+            <div class="container container-sm">
+                <h1 class="hero-title">
+                    Find Your Home in <span>Otukpo</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Search houses, flats, shops, and land across Otukpo town.
+                    Connect directly with landlords. <strong>No middlemen. No commission.</strong>
+                </p>
+
+                <form class="hero-search" id="heroSearch" role="search">
+                    <div class="search-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input
+                        type="text"
+                        id="heroSearchInput"
+                        placeholder="Search by location or property type..."
+                        aria-label="Search for properties"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Search
+                    </button>
+                </form>
+
+                <div class="hero-pills">
+                    <button class="pill" data-type="Flat">Flats</button>
+                    <button class="pill" data-type="Single Room">Rooms</button>
+                    <button class="pill" data-type="Shop/Store">Shops</button>
+                    <button class="pill" data-type="Land">Land</button>
+                    <button class="pill" data-type="all">All</button>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="statProperties">50+</span>
+                        <span class="stat-label">Properties</span>
+                    </div>
+                    <div class="stat-divider">|</div>
+                    <div class="stat">
+                        <span class="stat-number" id="statLandlords">30+</span>
+                        <span class="stat-label">Landlords</span>
+                    </div>
+                    <div class="stat-divider">|</div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Verified</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section class="features" id="about" aria-label="Why choose OtukpoRent">
+            <div class="container">
+                <h2 class="section-title">Why <span>OtukpoRent</span>?</h2>
+                <p class="section-subtitle">Find your next home with confidence</p>
+
+                <div class="features-grid grid grid-cols-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Local Search</h3>
+                        <p>Find properties in your exact location — from GRA to Pipeline to Otukpo town.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3>Direct Contact</h3>
+                        <p>Connect directly with landlords. No agents. No middlemen. No commission.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <h3>Trusted Listings</h3>
+                        <p>Every listing is reviewed and verified before going live. Rent with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED PROPERTIES ===== -->
+        <section class="featured" aria-label="Featured properties">
+            <div class="container">
+                <div class="flex items-center justify-between">
+                    <h2 class="section-title">Featured <span>Properties</span></h2>
+                    <a href="/app.html" class="btn btn-outline">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <p class="section-subtitle">Handpicked properties you'll love</p>
+
+                <div class="featured-grid grid grid-cols-4" id="featuredGrid">
+                    <!-- Rendered by JavaScript -->
+                    <div class="skeleton-loading">
+                        <div class="skeleton" style="height:200px;border-radius:12px;"></div>
+                        <div class="skeleton" style="height:20px;margin-top:12px;width:70%;"></div>
+                        <div class="skeleton" style="height:16px;margin-top:8px;width:50%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="cta" aria-label="Post your property">
+            <div class="container container-sm text-center">
+                <h2>Are You a Landlord?</h2>
+                <p>
+                    Post your property for free and get tenants fast.
+                    <strong>First 50 landlords get free verification.</strong>
+                </p>
+                <a href="/app.html#post" class="btn btn-gold btn-lg">
+                    <i class="fas fa-plus-circle"></i> Post Your Property
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== LOCATIONS ===== -->
+        <section class="locations" aria-label="Areas we cover">
+            <div class="container text-center">
+                <h2 class="section-title">Areas We <span>Cover</span></h2>
+                <p class="section-subtitle">Find properties in your neighborhood</p>
+
+                <div class="location-tags" id="locationTags">
+                    <!-- Rendered by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section class="contact" id="contact" aria-label="Contact us">
+            <div class="container">
+                <h2 class="section-title">Get in <span>Touch</span></h2>
+                <div class="contact-grid grid grid-cols-2">
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Otukpo, Benue State, Nigeria</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:080XXXXXXX">080XXXXXXX</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@otukporent.com">info@otukporent.com</a></p>
+                        <div class="contact-social">
+                            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" placeholder="Your name" required />
+                        <input type="email" placeholder="Your email" required />
+                        <textarea placeholder="Message" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="landing-footer" role="contentinfo">
+        <div class="container text-center">
+            <p>&copy; 2025 <strong>OtukpoRent</strong>. All rights reserved.</p>
+            <p class="footer-links">
+                <a href="/app.html">Find Houses</a>
+                <a href="/app.html#post">Post Property</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script type="module">
+        // ===== Landing Page Logic =====
+        import { LOCATIONS } from '../utils/constants.js';
+
+        // Render location tags
+        const locationContainer = document.getElementById('locationTags');
+        if (locationContainer) {
+            locationContainer.innerHTML = LOCATIONS
+                .map(loc => `<span class="location-tag">${loc}</span>`)
+                .join('');
+        }
+
+        // Hero search
+        document.getElementById('heroSearch')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = document.getElementById('heroSearchInput').value.trim();
+            if (query) {
+                window.location.href = `/app.html?search=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = '/app.html';
+            }
+        });
+
+        // Category pills
+        document.querySelectorAll('.hero-pills .pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                const url = type === 'all' ? '/app.html' : `/app.html?type=${encodeURIComponent(type)}`;
+                window.location.href = url;
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('open');
+        });
+
+        // Load featured properties
+        async function loadFeatured() {
+            try {
+                const response = await fetch('http://localhost:5000/api/properties?limit=4');
+                const data = await response.json();
+                const grid = document.getElementById('featuredGrid');
+
+                if (data.success && data.data.length > 0) {
+                    grid.innerHTML = data.data.map(p => `
+                        <a href="/app.html?property=${p.id}" class="featured-card">
+                            <div class="featured-card-img">
+                                ${p.photos && p.photos.length > 0
+                                    ? `<img src="${p.photos[0]}" alt="${p.type}" loading="lazy" />`
+                                    : `<div class="no-img">🏠</div>`
+                                }
+                                ${p.verified ? '<span class="badge-verified">✅ Verified</span>' : ''}
+                            </div>
+                            <div class="featured-card-body">
+                                <h4>${p.type}</h4>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> ${p.location}</p>
+                                ${p.price ? `<p class="price">${p.price}</p>` : ''}
+                            </div>
+                        </a>
+                    `).join('');
+                } else {
+                    grid.innerHTML = `
+                        <p style="grid-column:1/-1;text-align:center;color:#888;padding:40px 0;">
+                            No featured properties yet. Check back soon!
+                        </p>
+                    `;
+                }
+            } catch (error) {
+                console.warn('Could not load featured properties:', error);
+                // Show fallback with sample data
+                const grid = document.getElementById('featuredGrid');
+                grid.innerHTML = `
+                    <div class="featured-card">
+                        <div class="featured-card-img"><div class="no-img">🏠</div></div>
+                        <div class="featured-card-body">
+                            <h4>3-Bedroom Flat</h4>
+                            <p class="location">GRA, Otukpo</p>
+                            <p class="price">₦250,000/year</p>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <div class="featured-card-img"><div class="no-img">🏠</div></div>
+                        <div class="featured-card-body">
+                            <h4>Self-Contained</h4>
+                            <p class="location">Asa, Otukpo</p>
+                            <p class="price">₦120,000/year</p>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <div class="featured-card-img"><div class="no-img">🏠</div></div>
+                        <div class="featured-card-body">
+                            <h4>Shop/Store</h4>
+                            <p class="location">Otukpo Town</p>
+                            <p class="price">₦50,000/year</p>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <div class="featured-card-img"><div class="no-img">🏠</div></div>
+                        <div class="featured-card-body">
+                            <h4>Land</h4>
+                            <p class="location">Deport, Otukpo</p>
+                            <p class="price">₦500,000</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        loadFeatured();
+    </script>
+</body>
+</html>
